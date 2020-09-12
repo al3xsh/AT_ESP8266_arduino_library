@@ -25,8 +25,8 @@ Distributed as-is; no warranty is given.
 #include <SoftwareSerial.h>
 #include <IPAddress.h>
 #include "Client.h"
-#include "SparkFunESP8266WiFi.h"
-#include "SparkFunESP8266ClientReadBuffer.h"
+#include "ATESP8266WiFi.h"
+#include "ATESP8266ClientReadBuffer.h"
 
 #define ESP8266_CLIENT_MAX_BUFFER_SIZE 256
 

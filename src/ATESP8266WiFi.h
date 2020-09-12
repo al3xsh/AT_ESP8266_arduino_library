@@ -24,8 +24,9 @@ Distributed as-is; no warranty is given.
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 #include <IPAddress.h>
-#include "SparkFunESP8266Client.h"
-#include "SparkFunESP8266Server.h"
+
+#include "ATESP8266Client.h"
+#include "ATESP8266Server.h"
 
 /////////////////////
 // Pin Definitions //
@@ -36,14 +37,14 @@ Distributed as-is; no warranty is given.
 ///////////////////////////////
 // Command Response Timeouts //
 ///////////////////////////////
-#define COMMAND_RESPONSE_TIMEOUT 1000
-#define COMMAND_PING_TIMEOUT 3000
-#define WIFI_CONNECT_TIMEOUT 30000
-#define COMMAND_RESET_TIMEOUT 5000
-#define CLIENT_CONNECT_TIMEOUT 5000
+#define COMMAND_RESPONSE_TIMEOUT    1000
+#define COMMAND_PING_TIMEOUT        3000
+#define WIFI_CONNECT_TIMEOUT        30000
+#define COMMAND_RESET_TIMEOUT       5000
+#define CLIENT_CONNECT_TIMEOUT      5000
 
-#define ESP8266_MAX_SOCK_NUM 5
-#define ESP8266_SOCK_NOT_AVAIL 255
+#define ESP8266_MAX_SOCK_NUM        5
+#define ESP8266_SOCK_NOT_AVAIL      255
 
 static SoftwareSerial swSerial(ESP8266_SW_TX, ESP8266_SW_RX);
 
@@ -120,11 +121,12 @@ struct esp8266_status
 
 class ESP8266Class : public Stream
 {
+
 public:
 	ESP8266Class();
 
 
-	bool begin(unsigned long baudRate = 9600, esp8266_serial_port serialPort = ESP8266_SOFTWARE_SERIAL, HardwareSerial *hwSerial = 0);
+	bool begin(unsigned long baudRate = 9600, esp8266_serial_port serialPort = ESP8266_SOFTWARE_SERIAL);
 
 	///////////////////////
 	// Basic AT Commands //
@@ -157,17 +159,13 @@ public:
 	int16_t tcpSend(uint8_t linkID, const uint8_t *buf, size_t size);
 	int16_t close(uint8_t linkID);
 	int16_t setTransferMode(uint8_t mode);
-	int16_t setMux(uint8_t mux);
+	int16_t setMux(bool enable);
 	int16_t configureTCPServer(uint16_t port, uint8_t create = 1);
 	int16_t ping(IPAddress ip);
 	int16_t ping(char * server);
-		
-	//////////////////////////
-	// Custom GPIO Commands //
-	//////////////////////////
-	int16_t pinMode(uint8_t pin, uint8_t mode);
-	int16_t digitalWrite(uint8_t pin, uint8_t state);
-	int8_t digitalRead(uint8_t pin);
+
+	//int16_t tcpConnectSSL(uint8_t linkID, const char * destination, uint16_t port, uint16_t keepAlive);
+	//int16_t setSSLbuffer(uint16_t buffSize);
 	
 	///////////////////////////////////
 	// Virtual Functions from Stream //

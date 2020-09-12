@@ -1,0 +1,10 @@
+# wire pin 0 on the ESP8266 GPIO to ground (on the sparkfun shield, this is on the gpio header)
+
+# create a python environment that uses python 3 and has the pyserial library installed. I like anaconda :) -
+# conda activate pyserial_env
+
+# load sparkfun firmware
+python esptool.py -p /dev/ttyUSB1 -b 115200 write_flash --flash_size 512KB 0x0000 ./bin/sparkfun/SparkFunWiFiShield-070715.flash.bin 0x40000 ./bin/sparkfun/SparkFunWiFiShield-070715.irom0.text.bin 0x3e000 ./bin/sparkfun/blank.bin 0x7e000 ./bin/sparkfun/blank.bin
+
+# load at v2.0.0 firmware
+python esptool.py -p /dev/ttyUSB1 -b 115200 write_flash --flash_size 512KB 0x0000 ./bin/at_v2.0.0/noboot/eagle.flash.bin 0x10000 ./bin/at_v2.0.0/noboot/eagle.irom0text.bin 0x78000 ./bin/at_v2.0.0/blank.bin 0x7c000 ./bin/at_v2.0.0/esp_init_data_default.bin 0x7a000 ./bin/at_v2.0.0/blank.bin 0x7e000 ./bin/at_v2.0.0/blank.bin 

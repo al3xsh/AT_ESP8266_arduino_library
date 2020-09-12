@@ -1,27 +1,26 @@
-/******************************************************************************
-SparkFunESP8266Client.cpp
-ESP8266 WiFi Shield Library Client Source File
-Jim Lindblom @ SparkFun Electronics
-Original Creation Date: June 20, 2015
-http://github.com/sparkfun/SparkFun_ESP8266_AT_Arduino_Library
+/**
+ATESP8266Client.h
 
-!!! Description Here !!!
+Arduino library for managing wifi connections using an ESP8266 in AT mode 
+(using AT firmware v1.3.0).
 
-Development environment specifics:
-	IDE: Arduino 1.6.5
-	Hardware Platform: Arduino Uno
-	ESP8266 WiFi Shield Version: 1.0
+This is heavily based on the Sparkfun ESP8266 shield library - with some 
+updates for the latest AT firmware and support for SSL connections. This
+is tested using the Sparkfun ESP8266 WiFi Shield, but should work with any
+ESP8266 modules running the AT firmware.
 
-This code is beerware; if you see me (or any other SparkFun employee) at the
-local, and you've found our code helpful, please buy us a round!
+This has been adapted to fit the Arduino Client.h api (as mentioned in this
+issue: https://github.com/knolleary/pubsubclient/issues/107) and to strip
+out the AT responses from the read command.
 
-Distributed as-is; no warranty is given.
-******************************************************************************/
+author: Alex Shenfield
+date:   11/09/2020
+*/
 
-#include "SparkFunESP8266WiFi.h"
+#include "ATESP8266WiFi.h"
 #include <Arduino.h>
 #include "util/ESP8266_AT.h"
-#include "SparkFunESP8266Client.h"
+#include "ATESP8266Client.h"
 
 ESP8266Client::ESP8266Client()
 {

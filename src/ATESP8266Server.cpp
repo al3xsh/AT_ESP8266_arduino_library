@@ -18,10 +18,10 @@ local, and you've found our code helpful, please buy us a round!
 Distributed as-is; no warranty is given.
 ******************************************************************************/
 
-#include "SparkFunESP8266WiFi.h"
+#include "ATESP8266WiFi.h"
 #include <Arduino.h>
 #include "util/ESP8266_AT.h"
-#include "SparkFunESP8266Server.h"
+#include "ATESP8266Server.h"
 
 ESP8266Server::ESP8266Server(uint16_t port)
 {

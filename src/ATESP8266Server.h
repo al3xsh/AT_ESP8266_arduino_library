@@ -25,8 +25,8 @@ Distributed as-is; no warranty is given.
 #include <SoftwareSerial.h>
 #include <IPAddress.h>
 #include "Server.h"
-#include "SparkFunESP8266WiFi.h"
-#include "SparkFunESP8266Client.h"
+#include "ATESP8266WiFi.h"
+#include "ATESP8266Client.h"
 
 class ESP8266Server : public Server 
 {
